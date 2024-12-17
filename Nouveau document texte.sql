@@ -31,10 +31,12 @@ CREATE TABLE club (
     name VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE joueur (
+CREATE TABLE joueurs (
     joueur_id INT AUTO_INCREMENT PRIMARY KEY,
-    position ENUM('GK','CB1','CB2','RB','LB','MR','CM','ML','RW','SA','LW'),
+    
     name VARCHAR(100) NOT NULL,
+    position ENUM('GK','CB1','CB2','RB','LB','MR','CM','ML','RW','SA','LW'),
+    rating int ,
     club_id INT NOT NULL,
     nationalite_id INT NOT NULL,
     joueurStatique_id INT,
@@ -44,3 +46,5 @@ CREATE TABLE joueur (
     FOREIGN KEY (club_id) REFERENCES club(club_id),
     FOREIGN KEY (nationalite_id) REFERENCES nationalite(nationalite_id)
 );
+
+

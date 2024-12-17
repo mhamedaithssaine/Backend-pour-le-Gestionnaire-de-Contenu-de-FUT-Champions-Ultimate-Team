@@ -236,6 +236,7 @@
             border: none;
             cursor: pointer;
         }
+       
     </style>
 </head>
 <body>
@@ -294,11 +295,11 @@
                 <thead>
                     <tr>
                         <th>Player Name</th>
-                        <th>Team</th>
+                        <th>img</th>
                         <th>Position</th>
+                        <th>rating</th>
                         <th>Nationality</th>
-                        <th>Status</th>
-                        <th>Actions</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -306,12 +307,14 @@
                 </tbody>
             </table>
             <div class="form-container" id="add-player">
-                <form action="add_player.php" method="POST">
+                <form action="add_player.php" method="post">
+               
                     <h2>Add Player</h2>
+                    <label for="statique-player">Player Name</label>
                     <input type="text" name="name" placeholder="Player Name" required>
-                    <input type="number" name="club_id" placeholder="Team ID" required>
-                    <input type="number" name="nationalite_id" placeholder="Nationality ID" required>
-                    <select name="position" required>
+                    <!-- <label for="statique-player">Photo player</label>
+                    <input type="url" name="img" placeholder="URL du Photo du joueur "> -->
+                    <select id="positionValu" name="position" required>
                         <option value="GK">GK</option>
                         <option value="CB1">CB1</option>
                         <option value="CB2">CB2</option>
@@ -324,9 +327,28 @@
                         <option value="SA">SA</option>
                         <option value="LW">LW</option>
                     </select>
-                    <input type="number" name="Gk_id" placeholder="Goalkeeper Statistics ID (if applicable)">
-                    <input type="number" name="joueurStatique_id" placeholder="Player Statistics ID (if applicable)">
-                    <button type="submit">Add Player</button>
+                    <label for="statique-player">Rating</label>
+
+                    <input name="rating" type="number"  placeholder="Ex:85">
+                    <div class="hide">
+                            <label for="statique-player">Statistiques</label>
+                            <input name="pace" type="number" id="pace" placeholder="Ex:60">
+                            <input name="shooting" type="number" id="shooting" placeholder="Ex:50">
+                            <input name="dribbling" type="number" id="dribbling" placeholder="Ex:30">
+                            <input name="passing" type="number" id="passing" placeholder="Ex:40">
+                            <input name="defending" type="number" id="defending" placeholder="Ex:20">
+                            <input name="physical" type="number" id="physical" placeholder="Ex:10">
+                        </div>
+                        <div class="hidden">
+                            <label for="statique-player">Statistiques Goalkeeper</label>
+                            <input name="diving" type="number" id="diving" placeholder="diving">
+                            <input name="handling" type="number" id="handling" placeholder="handling">
+                            <input name="kicking" type="number" id="kicking" placeholder="kicking">
+                            <input name="reflexes" type="number" id="reflexes" placeholder="reflexes">
+                            <input name="speed" type="number" id="speed" placeholder="speed">
+                            <input name="positioning" type="number" id="positioning" placeholder="positioning">
+                        </div>
+                    <button name="addplayer" type="submit">Add Player</button>
                 </form>
             </div>
         </div>
@@ -358,7 +380,7 @@
                 <form action="add_team.php" method="POST">
                     <h2>Add Team</h2>
                     <input type="text" name="name" placeholder="Team Name" required>
-                    <input type="text" name="country" placeholder="Country" required>
+                    <input type="url" name="logo" placeholder="http//:cdn.." required>
                     <button type="submit">Add Team</button>
                 </form>
             </div>
@@ -390,6 +412,7 @@
                 <form action="add_nationality.php" method="POST">
                     <h2>Add Nationality</h2>
                     <input type="text" name="name" placeholder="Nationality Name" required>
+                    <input type="url" name="flag" placeholder="http//:cdn.." required>
                     <button type="submit">Add Nationality</button>
                 </form>
             </div>
@@ -397,6 +420,8 @@
     </div>
 
     <script>
+
+
         document.querySelectorAll('.sidebar-menu li a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();

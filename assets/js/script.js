@@ -60,7 +60,6 @@ document.getElementById("PositionPlayer").addEventListener("change",function(){
     principalStatique.style.display="block";
   }
 
-  // console.log(selectPosition);
 });
 
 // pour la verification de poste 
